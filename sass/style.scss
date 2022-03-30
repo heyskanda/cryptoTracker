@@ -1,0 +1,166 @@
+@import './variable';
+@import './gradient';
+@import './media-query';
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    background: $mainGradient;
+    padding: 5%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    h2, h3, h4{
+        margin: 0 0 10px 0;
+    }
+
+    a{
+        text-decoration: none;
+        color: $primary;
+    }
+
+    li{
+        list-style: none;
+    }
+}
+
+@mixin gridProperty($justify, $align) {
+    display: grid;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin flexProperty($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin vertical($height, $primary) {
+    width: 0.1rem;
+    height: $height;
+    background-color: $primary;
+}
+
+.container{
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(autofit, minmax(240px, 1fr));
+    grid-auto-rows: minmax(140px, auto);
+}
+
+.container-box{
+    @include gridProperty(start, left);
+    color: $primary;
+    padding: map-get($spacing, 'm');
+    background: $blockGradient;
+    border-radius: 15px;
+    box-shadow: rgba(240, 59, 46, 0.4) 5px 5px, rgba(240, 59, 46, 0.3) 10px 10px, rgba(240, 59, 46, 0.2) 15px 15px, rgba(240, 59, 46, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+
+    &.block-1{
+        align-items: center;
+        justify-content: center;
+        font-size: map-get($font-size, 'm');
+
+        .dropdown{
+            @include flexProperty(row, space-evenly, center);
+            background: linear-gradient(90deg, rgba(255,178,141,1) 0%, rgba(255,218,197,1) 49%);
+            color: $secondary;
+            padding: 8px 5px;
+            border-radius: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+            img{
+                height: map-get($image-size, 'm');
+                width: map-get($image-size, 'm');
+                background-color: $primary;
+                padding: 5px;
+                border-radius: 50%;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            }
+
+            ul{
+                display: none;
+                position: absolute;
+            }
+
+            ul li{
+                display: inline-flex;
+            }
+
+            .dropdown:hover ul{
+                display: block;
+            }
+        }
+
+        .dropdown #line{
+            @include vertical(30px, $secondary);
+        }
+    }
+
+    &.block-2{
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        font-size: map-get($font-size, 's');
+
+        div, section{
+            justify-self: center;
+            align-self: center;
+            text-align: center;
+        }
+
+        #price, #trend{
+            grid-column: span 3;
+        }
+
+        #verticalLine{
+            @include vertical(70px, $primary);
+        }
+    }
+
+    &.block-3{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 6fr;
+        height: 22rem;
+        padding: 5% 10%;
+
+        .heading{
+            @include flexProperty(column, normal, center);
+            font-size: map-get($font-size, 's');
+        }
+    }
+}
+
+.exchangesList{
+    @include gridProperty(center, center);
+}
+
+.exchange{
+    align-items: center;
+    justify-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 60px;
+    padding: 5px 0;
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    border-radius: 15px;
+    background: radial-gradient(circle at top left, rgba(41,38,37,1) 0%, rgba(75,67,63,1) 80%);
+
+    img{
+        height: map-get($image-size, '');
+        width: map-get($image-size, 'l');
+        background: #4B433F;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 50%;
+        padding: 3px;
+    }
+
+    h4{
+        font-size: 1.5rem;
+    }
+}
