@@ -2,27 +2,6 @@
 @import './gradient';
 @import './media-query';
 
-body{
-    font-family: 'Montserrat', sans-serif;
-    background: $mainGradient;
-    padding: 5%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-    h2, h3, h4{
-        margin: 0 0 10px 0;
-    }
-
-    a{
-        text-decoration: none;
-        color: $primary;
-    }
-
-    li{
-        list-style: none;
-    }
-}
-
 @mixin gridProperty($justify, $align) {
     display: grid;
     justify-content: $justify;
@@ -42,6 +21,49 @@ body{
     background-color: $primary;
 }
 
+@mixin button(){
+    border-radius: 8px;
+    background-color: transparent;
+    color: $heading;
+    font-weight: 600;
+    border: none;
+    padding: 5px 10px;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    background: $mainGradient;
+    padding: 5%;
+    background-size: cover;
+    background-attachment: fixed;
+    
+    h2, h3, h4, h5{
+        margin: 0;
+    }
+
+    h3{
+        font-size: map-get($font-size, 'm');
+    }
+
+    h5{
+        font-size: map-get($font-size, 's');
+        color: $heading;
+    }
+
+    a{
+        text-decoration: none;
+        color: $primary;
+    }
+
+    li{
+        list-style: none;
+    }
+
+    #line{
+        @include vertical(2rem, $secondary);
+    }
+}
+
 .container{
     display: grid;
     gap: 1rem;
@@ -55,23 +77,27 @@ body{
     padding: map-get($spacing, 'm');
     background: $blockGradient;
     border-radius: 15px;
-    box-shadow: rgba(240, 59, 46, 0.4) 5px 5px, rgba(240, 59, 46, 0.3) 10px 10px, rgba(240, 59, 46, 0.2) 15px 15px, rgba(240, 59, 46, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+    box-shadow: $mainBlockShadow;
 
     &.block-1{
         align-items: center;
         justify-content: center;
         font-size: map-get($font-size, 'm');
 
+        label h3{
+            font-size: map-get($font-size, 'm');
+            margin-bottom: 10px;
+        }
+
         .dropdown{
-            @include flexProperty(row, space-evenly, center);
-            background: linear-gradient(90deg, rgba(255,178,141,1) 0%, rgba(255,218,197,1) 49%);
+            background: $dropdownGradient;
             color: $secondary;
             padding: 8px 5px;
             border-radius: 15px;
             font-weight: 600;
             cursor: pointer;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
+            
             img{
                 height: map-get($image-size, 'm');
                 width: map-get($image-size, 'm');
@@ -81,28 +107,55 @@ body{
                 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             }
 
-            ul{
-                display: none;
+            button{
+                border: none;
+                @include flexProperty(row, space-evenly, center);
+                min-width: 145px;
+                background: none;
+                cursor: pointer;
+                font-size: large;
+                font-weight: 600;
+            }
+
+            .dropdownContent{
                 position: absolute;
+                @include gridProperty(normal, normal);
+                grid-template-rows: repeat(6, 1fr);
+                background: $dropdownGradient;
+                margin-top: 0.8rem;
+                border-radius: 10px;
+                box-shadow: $plainBlackShadow;
+                opacity: 0;
+                transform: translateY(-20px);
+                transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+                pointer-events: none;
+
+                a{
+                    color: $secondary;
+                    min-width: 125px;
+                    @include flexProperty(row, space-evenly, center);
+                    font-size: large;
+                    padding: 10px;
+                    border-radius: 10px;
+                    transition: background-color 200ms ease-in-out;
+                    background-color: rgba(75, 67, 63, 0);
+                }
+
+                a:hover{
+                    background-color: rgba(75, 67, 63, 0.2);
+                }
             }
 
-            ul li{
-                display: inline-flex;
+            .dropdownButton:focus + .dropdownContent{
+                opacity: 1;
+                transform: translateY(0px);
             }
-
-            .dropdown:hover ul{
-                display: block;
-            }
-        }
-
-        .dropdown #line{
-            @include vertical(30px, $secondary);
         }
     }
 
     &.block-2{
         display: grid;
-        grid-template-columns: repeat(7, 1fr);
+        grid-template-columns: repeat(11, 1fr);
         font-size: map-get($font-size, 's');
 
         div, section{
@@ -111,12 +164,22 @@ body{
             text-align: center;
         }
 
-        #price, #trend{
+        #price, #marketCap, #trend{
             grid-column: span 3;
+
+            h5{
+                margin-bottom: 5px;
+            }
         }
 
         #verticalLine{
             @include vertical(70px, $primary);
+            grid-column: span 1;
+            background-color: $heading;
+        }
+
+        span{
+            font-weight: 600;
         }
     }
 
@@ -125,11 +188,30 @@ body{
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 6fr;
         height: 22rem;
-        padding: 5% 10%;
+        padding: 5% 8%;
 
         .heading{
             @include flexProperty(column, normal, center);
             font-size: map-get($font-size, 's');
+        }
+
+        button{
+            @include button();
+            cursor: pointer;
+        }
+    }
+
+    &.block-4{
+        @include gridProperty(normal, normal);
+        justify-items: center;
+        grid-template-columns: 1fr;
+        
+        .heading{
+            font-size: map-get($font-size, 's');
+        }
+
+        .chart{
+            margin-top: 5%;
         }
     }
 }
@@ -142,7 +224,7 @@ body{
     align-items: center;
     justify-items: center;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     height: 60px;
     padding: 5px 0;
 
@@ -158,9 +240,52 @@ body{
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         border-radius: 50%;
         padding: 3px;
+        grid-column: span 2;
     }
 
     h4{
         font-size: 1.5rem;
+        grid-column: span 2;
     }
+    
+    button{
+        grid-column: span 2;
+    }
+}
+
+.switcher {
+	display: flex;
+	align-items: center;
+	height: 30px;
+	margin-top: 8px;
+	color: #2196F3;
+}
+
+.switcher-item {
+	cursor: pointer;
+	text-decoration: none;
+	display: inline-block;
+	padding: 6px 8px;
+	font-size: 14px;
+	color: #FFDAC5;
+	background-color: transparent;
+	margin-right: 8px;
+	border: none;
+	border-radius: 4px;
+	outline: none;
+}
+
+.switcher-item:hover {
+	background-color: #3b3938;
+}
+
+.switcher-active-item {
+	text-decoration: none;
+	cursor: default;
+	color: #FFDAC5;
+}
+
+.switcher-active-item,
+.switcher-active-item:hover {
+	background-color: #3b3938;
 }

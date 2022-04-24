@@ -1,0 +1,159 @@
+
+                var labels = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+                /**
+                * Styling the CHART JS line chart
+                */
+
+                // var borderColor;
+                // var pointColor = 'rgb(255, 218, 197)';
+
+                // if(weeklyPrice[0] < weeklyPrice[weeklyPrice.length - 1]){
+                // borderColor = 'rgba(50, 205, 50, 0.5)';
+                // weeklyChange.style.color = 'rgba(50, 205, 50, 0.7)';
+                // weeklyChange.innerHTML = '+';
+                // }
+
+                // else if(weeklyPrice[0] == weeklyPrice[weeklyPrice.length - 1]){
+                // borderColor = 'grey';
+                // }
+
+                // else{
+                // borderColor = 'rgba(255, 0, 0, 0.5)';
+                // weeklyChange.style.color = 'rgba(255, 0, 0, 1)';
+                // weeklyChange.innerHTML = '-';
+                // }
+
+                // var minimumScale = weeklyPrice[weeklyPrice.length - 1] * 0.9;
+                // var maximumScale = weeklyPrice[weeklyPrice.length - 1] * 1.1;
+
+                // var myChart = new Chart(CHART, {
+
+                // type: "line",
+
+                // data: {
+                //     labels: labels,
+                //     datasets: [{
+                //     fill: false,
+                //     lineTension: 0,
+                //     backgroundColor: pointColor,
+                //     borderColor: borderColor,
+                //     data: weeklyPrice
+                //     }]
+                // },
+
+                // options: {
+                //     legend: {
+                //     display: false
+                //     },
+                //     scales: {
+                //     yAxes: [{ticks: {min:minimumScale, max:maximumScale}}],
+                //     },
+                //     maintainAspectRatio: false
+                // }
+
+                // });
+
+
+
+
+Main code 
+
+
+    var array = ['ETH','BTC','BNB','SOL','ADA','DOT','FTM'];
+    var mainDropdownSection = document.getElementById('dropdownButton').innerHTML;
+    
+    array.forEach(child => {
+
+        if(e.target.matches(`#${child}`)){
+            
+            var childDropdownSection = document.getElementById(`${child}`).innerHTML;
+
+            document.querySelector('.dropdownButton').innerHTML = childDropdownSection;
+            document.getElementById(`${child}`).innerHTML = mainDropdownSection;
+
+            const HISTORICAL_DATA = `https://min-api.cryptocompare.com/data/v2/histoday?fsym=${child}&tsym=USD&limit=6`;
+            const MARKET_CAP = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${child}&tsyms=USD`;
+            const CURRENT_PRICE = `https://min-api.cryptocompare.com/data/price?fsym=${child}&tsyms=USD`;
+
+            /**
+             * Returns json parsed response from API
+             * 
+             * @param {string} url String with URL
+             * @returns json response
+             */
+
+            async function fetchAPIData(url){
+
+                try{
+                let response = await fetch(url);
+                return await response.json();
+                }
+
+                catch(error){
+                console.log(error);
+                }
+
+            }
+
+            /**
+             * Stores the opening price of ETH of the last 7 days
+             * 
+             * @returns array with price of ETH at different points
+             */
+
+            async function processHistoricalData(){
+
+                let data = await fetchAPIData(HISTORICAL_DATA);
+                let storeData = [];
+                
+                data.Data.Data.forEach(item => {
+                    storeData.push(item.open);
+                });
+                
+                return storeData;
+
+            }
+
+            async function processCurrentPrice(){
+
+                let price = await fetchAPIData(CURRENT_PRICE);
+                document.getElementById('cryptoPrice').innerHTML = `$ ${price.USD}`;
+                return;
+
+            }
+
+            processCurrentPrice();
+
+            async function chartJS(){
+
+                let weeklyPrice = await processHistoricalData();
+
+                var weeklyChange = document.getElementById('percentageChange');
+
+                function calculateWeeklyChange(){
+
+                    var calculateChange = ((weeklyPrice[0] - weeklyPrice[weeklyPrice.length - 1]) * 100) / weeklyPrice[0];
+                    weeklyChange.innerHTML = Math.abs(calculateChange.toFixed(2)) + '%';
+
+                }
+
+                calculateWeeklyChange();
+
+                return;
+
+            }
+
+            chartJS();
+
+            async function calculateMarketCap(){
+
+                let data = await fetchAPIData(MARKET_CAP);
+
+                document.getElementById('marketCapValue').innerHTML = data.DISPLAY[child].USD.MKTCAP;
+
+            }
+
+            calculateMarketCap();
+        }
+    });

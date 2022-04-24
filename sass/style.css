@@ -1,3 +1,9 @@
+@media screen and (min-width: 960px) {
+  body {
+    margin: 0 10%;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .block-1 {
     grid-column: span 2;
@@ -19,12 +25,21 @@ body {
   font-family: 'Montserrat', sans-serif;
   background: radial-gradient(circle at top right, #ffeacb 0%, #ffa47d 100%);
   padding: 5%;
-  background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
 
-body h2, body h3, body h4 {
-  margin: 0 0 10px 0;
+body h2, body h3, body h4, body h5 {
+  margin: 0;
+}
+
+body h3 {
+  font-size: 1.4rem;
+}
+
+body h5 {
+  font-size: 1.2rem;
+  color: #eab192;
 }
 
 body a {
@@ -34,6 +49,12 @@ body a {
 
 body li {
   list-style: none;
+}
+
+body #line {
+  width: 0.1rem;
+  height: 2rem;
+  background-color: #292625;
 }
 
 .container {
@@ -58,8 +79,8 @@ body li {
   padding: 25px;
   background: radial-gradient(circle at top right, rgba(41, 38, 37, 0.849475) 0%, #292625 50%);
   border-radius: 15px;
-  -webkit-box-shadow: rgba(240, 59, 46, 0.4) 5px 5px, rgba(240, 59, 46, 0.3) 10px 10px, rgba(240, 59, 46, 0.2) 15px 15px, rgba(240, 59, 46, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
-          box-shadow: rgba(240, 59, 46, 0.4) 5px 5px, rgba(240, 59, 46, 0.3) 10px 10px, rgba(240, 59, 46, 0.2) 15px 15px, rgba(240, 59, 46, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .container-box.block-1 {
@@ -72,20 +93,12 @@ body li {
   font-size: 1.4rem;
 }
 
+.container-box.block-1 label h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
 .container-box.block-1 .dropdown {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   background: -webkit-gradient(linear, left top, right top, from(#ffb28d), color-stop(49%, #ffdac5));
   background: linear-gradient(90deg, #ffb28d 0%, #ffdac5 49%);
   color: #292625;
@@ -107,32 +120,95 @@ body li {
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.container-box.block-1 .dropdown ul {
-  display: none;
+.container-box.block-1 .dropdown button {
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: 145px;
+  background: none;
+  cursor: pointer;
+  font-size: large;
+  font-weight: 600;
+}
+
+.container-box.block-1 .dropdown .dropdownContent {
   position: absolute;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: normal;
+      -ms-flex-pack: normal;
+          justify-content: normal;
+  -webkit-box-align: normal;
+      -ms-flex-align: normal;
+          align-items: normal;
+  -ms-grid-rows: (1fr)[6];
+      grid-template-rows: repeat(6, 1fr);
+  background: -webkit-gradient(linear, left top, right top, from(#ffb28d), color-stop(49%, #ffdac5));
+  background: linear-gradient(90deg, #ffb28d 0%, #ffdac5 49%);
+  margin-top: 0.8rem;
+  border-radius: 10px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+          box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  opacity: 0;
+  -webkit-transform: translateY(-20px);
+          transform: translateY(-20px);
+  -webkit-transition: opacity 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
+  pointer-events: none;
 }
 
-.container-box.block-1 .dropdown ul li {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+.container-box.block-1 .dropdown .dropdownContent a {
+  color: #292625;
+  min-width: 125px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: large;
+  padding: 10px;
+  border-radius: 10px;
+  -webkit-transition: background-color 200ms ease-in-out;
+  transition: background-color 200ms ease-in-out;
+  background-color: rgba(75, 67, 63, 0);
 }
 
-.container-box.block-1 .dropdown .dropdown:hover ul {
-  display: block;
+.container-box.block-1 .dropdown .dropdownContent a:hover {
+  background-color: rgba(75, 67, 63, 0.2);
 }
 
-.container-box.block-1 .dropdown #line {
-  width: 0.1rem;
-  height: 30px;
-  background-color: #292625;
+.container-box.block-1 .dropdown .dropdownButton:focus + .dropdownContent {
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
 }
 
 .container-box.block-2 {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[7];
-      grid-template-columns: repeat(7, 1fr);
+  -ms-grid-columns: (1fr)[11];
+      grid-template-columns: repeat(11, 1fr);
   font-size: 1.2rem;
 }
 
@@ -145,14 +221,24 @@ body li {
   text-align: center;
 }
 
-.container-box.block-2 #price, .container-box.block-2 #trend {
+.container-box.block-2 #price, .container-box.block-2 #marketCap, .container-box.block-2 #trend {
   grid-column: span 3;
+}
+
+.container-box.block-2 #price h5, .container-box.block-2 #marketCap h5, .container-box.block-2 #trend h5 {
+  margin-bottom: 5px;
 }
 
 .container-box.block-2 #verticalLine {
   width: 0.1rem;
   height: 70px;
   background-color: #FFDAC5;
+  grid-column: span 1;
+  background-color: #eab192;
+}
+
+.container-box.block-2 span {
+  font-weight: 600;
 }
 
 .container-box.block-3 {
@@ -163,7 +249,7 @@ body li {
   -ms-grid-rows: 1fr 6fr;
       grid-template-rows: 1fr 6fr;
   height: 22rem;
-  padding: 5% 10%;
+  padding: 5% 8%;
 }
 
 .container-box.block-3 .heading {
@@ -181,6 +267,38 @@ body li {
       -ms-flex-align: center;
           align-items: center;
   font-size: 1.2rem;
+}
+
+.container-box.block-3 button {
+  border-radius: 8px;
+  background-color: transparent;
+  color: #eab192;
+  font-weight: 600;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.container-box.block-4 {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: normal;
+      -ms-flex-pack: normal;
+          justify-content: normal;
+  -webkit-box-align: normal;
+      -ms-flex-align: normal;
+          align-items: normal;
+  justify-items: center;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+}
+
+.container-box.block-4 .heading {
+  font-size: 1.2rem;
+}
+
+.container-box.block-4 .chart {
+  margin-top: 5%;
 }
 
 .exchangesList {
@@ -201,8 +319,8 @@ body li {
   justify-items: center;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
   height: 60px;
   padding: 5px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -218,9 +336,56 @@ body li {
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 50%;
   padding: 3px;
+  grid-column: span 2;
 }
 
 .exchange h4 {
   font-size: 1.5rem;
+  grid-column: span 2;
+}
+
+.exchange button {
+  grid-column: span 2;
+}
+
+.switcher {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 30px;
+  margin-top: 8px;
+  color: #2196F3;
+}
+
+.switcher-item {
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  padding: 6px 8px;
+  font-size: 14px;
+  color: #FFDAC5;
+  background-color: transparent;
+  margin-right: 8px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+}
+
+.switcher-item:hover {
+  background-color: #3b3938;
+}
+
+.switcher-active-item {
+  text-decoration: none;
+  cursor: default;
+  color: #FFDAC5;
+}
+
+.switcher-active-item,
+.switcher-active-item:hover {
+  background-color: #3b3938;
 }
 /*# sourceMappingURL=style.css.map */

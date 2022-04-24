@@ -1,6 +1,13 @@
-$width: 768px;
+$tab: 768px;
+$computer: 960px;
 
-@media screen and (min-width: $width){
+@media screen and (min-width: $computer){
+    body{
+        margin: 0 10%;
+    }
+}
+
+@media screen and (min-width: $tab){
     .block-1{
         grid-column: span 2;
     }
@@ -14,6 +21,6 @@ $width: 768px;
     }
 
     .block-4{
-        grid-column: span 3;
+        grid-column: span 3;    
     }
 }

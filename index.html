@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./sass/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="all" href="css/stellarnav.min.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel = "icon" href = "/Images/ct logo.PNG">
+    <title>Crypto Tracker</title>
 </head>
 <body>
     <main>
@@ -17,113 +18,133 @@
                     <h3>Select crypto</h3>
                 </label>
 
-                <div class="dropdown">
-                    <img src="https://dsm01pap001files.storage.live.com/y4m4prhjsWIcM9teeZQXpMOWVnQ_srhRILPA8nYrXFK656HXTVKgWaqyEi_ILxpF4GBUNjhMDGf8bgz0FFbLlqhfOc-yXQJ76kPB3AyWDQJ_VxRkmnLsffDXrWpwYAvWV9H_3rP6PjF_GsctSOsImbyw77ra_FsLSiuRSFopetDVy_pOoT68lda1lwv7XAQponF?width=3258&height=3258&cropmode=none" alt="ethereum_logo">
-                    <div id="line"></div>
-                    ETH
+                <div class="dropdown" data-dropdown>
 
-                    <ul>
-                        <li id="btc">
-                            <img src="https://dsm01pap001files.storage.live.com/y4m4prhjsWIcM9teeZQXpMOWVnQ_srhRILPA8nYrXFK656HXTVKgWaqyEi_ILxpF4GBUNjhMDGf8bgz0FFbLlqhfOc-yXQJ76kPB3AyWDQJ_VxRkmnLsffDXrWpwYAvWV9H_3rP6PjF_GsctSOsImbyw77ra_FsLSiuRSFopetDVy_pOoT68lda1lwv7XAQponF?width=3258&height=3258&cropmode=none" alt="ethereum_logo">
+                    <button class="dropdownButton" id="ETH" data-dropdown-button>
+                        <img src="https://dsm01pap001files.storage.live.com/y4m4prhjsWIcM9teeZQXpMOWVnQ_srhRILPA8nYrXFK656HXTVKgWaqyEi_ILxpF4GBUNjhMDGf8bgz0FFbLlqhfOc-yXQJ76kPB3AyWDQJ_VxRkmnLsffDXrWpwYAvWV9H_3rP6PjF_GsctSOsImbyw77ra_FsLSiuRSFopetDVy_pOoT68lda1lwv7XAQponF?width=3258&height=3258&cropmode=none" id="dropdownImage" alt="ethereum_logo">
+                        <div id="line"></div>
+                        ETH
+                    </button>
+
+                    <div id="content" class="dropdownContent" data-dropdown-content>
+                        <a href="#" id="BTC" data-dropdown-content>
+                            <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=022" alt="bitcoin_logo">
                             <div id="line"></div>
                             BTC
-                        </li>
+                        </a>
 
-                        <li id="avax">
-                            <img src="https://dsm01pap001files.storage.live.com/y4m4prhjsWIcM9teeZQXpMOWVnQ_srhRILPA8nYrXFK656HXTVKgWaqyEi_ILxpF4GBUNjhMDGf8bgz0FFbLlqhfOc-yXQJ76kPB3AyWDQJ_VxRkmnLsffDXrWpwYAvWV9H_3rP6PjF_GsctSOsImbyw77ra_FsLSiuRSFopetDVy_pOoT68lda1lwv7XAQponF?width=3258&height=3258&cropmode=none" alt="ethereum_logo">
+                        <a href="#" id="BNB" data-dropdown-content>
+                            <img src="https://cryptologos.cc/logos/bnb-bnb-logo.png?v=022" alt="binance_coin_logo">
                             <div id="line"></div>
-                            AVAX
-                        </li>
+                            BNB
+                        </a>
 
-                        <li id="luna">
-                            <img src="https://dsm01pap001files.storage.live.com/y4m4prhjsWIcM9teeZQXpMOWVnQ_srhRILPA8nYrXFK656HXTVKgWaqyEi_ILxpF4GBUNjhMDGf8bgz0FFbLlqhfOc-yXQJ76kPB3AyWDQJ_VxRkmnLsffDXrWpwYAvWV9H_3rP6PjF_GsctSOsImbyw77ra_FsLSiuRSFopetDVy_pOoT68lda1lwv7XAQponF?width=3258&height=3258&cropmode=none" alt="ethereum_logo">
+                        <a href="#" id="SOL" data-dropdown-content>
+                            <img src="https://cryptologos.cc/logos/solana-sol-logo.png?v=022" alt="solana_logo">
                             <div id="line"></div>
-                            LUNA
-                        </li>
+                            SOL
+                        </a>
 
-                        <li id="ftm">
-                            <img src="https://dsm01pap001files.storage.live.com/y4m4prhjsWIcM9teeZQXpMOWVnQ_srhRILPA8nYrXFK656HXTVKgWaqyEi_ILxpF4GBUNjhMDGf8bgz0FFbLlqhfOc-yXQJ76kPB3AyWDQJ_VxRkmnLsffDXrWpwYAvWV9H_3rP6PjF_GsctSOsImbyw77ra_FsLSiuRSFopetDVy_pOoT68lda1lwv7XAQponF?width=3258&height=3258&cropmode=none" alt="ethereum_logo">
+                        <a href="#" id="ADA" data-dropdown-content>
+                            <img src="https://cryptologos.cc/logos/cardano-ada-logo.png?v=022" alt="cardano_logo">
                             <div id="line"></div>
-                            BTC
-                        </li>
+                            ADA
+                        </a>
 
-                        <li id="dot">
-                            <img src="https://dsm01pap001files.storage.live.com/y4m4prhjsWIcM9teeZQXpMOWVnQ_srhRILPA8nYrXFK656HXTVKgWaqyEi_ILxpF4GBUNjhMDGf8bgz0FFbLlqhfOc-yXQJ76kPB3AyWDQJ_VxRkmnLsffDXrWpwYAvWV9H_3rP6PjF_GsctSOsImbyw77ra_FsLSiuRSFopetDVy_pOoT68lda1lwv7XAQponF?width=3258&height=3258&cropmode=none" alt="ethereum_logo">
+                        <a href="#" id="DOT" data-dropdown-content>
+                            <img src="https://cryptologos.cc/logos/polkadot-new-dot-logo.png?v=022" alt="polkadot_logo">
                             <div id="line"></div>
                             DOT
-                        </li>
-                    </ul>
+                        </a>
+
+                        <a href="#" id="FTM" data-dropdown-content>
+                            <img src="https://cryptologos.cc/logos/fantom-ftm-logo.png?v=022" alt="fantom_logo">
+                            <div id="line"></div>
+                            FTM
+                        </a>
+                    </div>
+
                 </div>
 
             </div>
 
             <div class="container-box block-2">
                 <section id="price">
-                    <h3>Current Price</h3>
+                    <h5>Price</h5>
 
                     <!-- Crypto price to be updated here -->
                     
-                    <span id="cryptoPrice">$2000</span>
+                    <span id="cryptoPrice"></span>
+                </section>
+
+                <div id="verticalLine"></div>
+
+                <section id="marketCap">
+                    <h5>Market Cap</h5>
+
+                    <!-- 1 week trend to be updated here -->
+                    
+                    <span id="marketCapValue"></span>
                 </section>
 
                 <div id="verticalLine"></div>
 
                 <section id="trend">
-                    <h3>1 Week Trend</h3>
+                    <h5>Weekly Trend</h5>
 
                     <!-- 1 week trend to be updated here -->
                     
-                    <span id="percentageChange">18%</span>
+                    <span id="percentageChange"></span>
                 </section>
             </div>
 
             <div class="container-box block-3">
                 <div class="heading">
-                    <h2>Top Exchanges</h2>
+                    <h3>Top Exchanges</h3>
                 </div>
 
                 <div class="exchangesList">
-                    <a href="https://www.binance.com/en-IN">
+                    <a href="https://www.binance.com/en/trade/eth_usdt" id="binance">
                         <div class="exchange number-1">
-                            <img src="https://dsm01pap001files.storage.live.com/y4m0yWsjzdl_CRo4yq_sWUDRt8TdWOFEQsKP8R8flKOSJGx-yL7kpN4xDfDwVa1xC1q2u5PgVtTpnJsEn6VrEdunVetiH5GgX3QL7xwoL91oqWCI-6Q7-XVW2-3sBvpUb4y2MV7DvD4E9gQynk70ZsaZ1KfiJD881ejqyg5smfE2MAc3Z2hyjrcKpdGyMyR4CEN?width=2000&height=2000&cropmode=none" width="50" height="50" alt="Binance_Logo">
-                            <h4>Binance</h4>
+                                <img src="https://dsm01pap001files.storage.live.com/y4m0yWsjzdl_CRo4yq_sWUDRt8TdWOFEQsKP8R8flKOSJGx-yL7kpN4xDfDwVa1xC1q2u5PgVtTpnJsEn6VrEdunVetiH5GgX3QL7xwoL91oqWCI-6Q7-XVW2-3sBvpUb4y2MV7DvD4E9gQynk70ZsaZ1KfiJD881ejqyg5smfE2MAc3Z2hyjrcKpdGyMyR4CEN?width=2000&height=2000&cropmode=none" width="50" height="50" alt="Binance_Logo">
+                                <h4>Binance</h4>
 
-                            <!-- Price of the Binance Exchange to be updated here -->
+                                <!-- Price of the Binance Exchange to be updated here -->
 
-                            <span id="exchangePrice">$2300</span>
+                                <button id='buyButton binance'><i class="fa-solid fa-arrow-right-to-bracket fa-xl"></i></button>
                         </div>
                     </a>
 
-                    <a href="https://ftx.com/">
+                    <a href="https://ftx.com/en/trade/ETH/USDT" id="ftx">
                         <div class="exchange number-2">
                             <img src="https://dsm01pap001files.storage.live.com/y4m6_3s1BIT5ZYEql6yGRaFUAlob4EsmUM-V4iWSSSvAzB-LXzHieyfr-OyrSSq8RV2xdHv-1eujnvN4pSathXadjCPQFxnRYpLV6uT10gj8bC-AG_Dh18KkdyMmB_pgLNgxVwjaJqL65RfAHzESoPRz_-4mwpvHMbKZgEUEiLoc8VccqROcUTIhTdCgHxt9lsd?width=1520&height=1520&cropmode=none" width="50" height="50" alt="FTX_crypto_exchange_logo">
                             <h4>FTX</h4>
 
                             <!-- Price of the FTX Exchange to be updated here -->
 
-                            <span id="exchangePrice">$2300</span>
+                            <button id='buyButton ftx'><i class="fa-solid fa-arrow-right-to-bracket fa-xl"></i></button>
                         </div>
                     </a>
 
-                    <a href="https://www.coinbase.com/">
+                    <a href="https://www.coinbase.com/price/ethereum" id="coinbase">
                         <div class="exchange number-3">
                             <img src="https://dsm01pap001files.storage.live.com/y4mtHP6_o-Iib63jAUT-B7ZBjZRJeMuS1636D4h5fuAY_3rQKVMCFJM3K-9Cm0pXLsLVaGFj6XVCVSC2Ngwn7RSexr-VQs0TbarVojvKjb5jvESiVvwuqE2JWeBU5-CdQA1t9TV8DwTwqqDZY1zU1mp0rBlFKTokwEjliIRIpBFEkUu7W6I4Q_L2fqIoqauuTfa?width=1520&height=1520&cropmode=none" width="50" height="50" alt="Coinbase_crypto_exchange_logo">
                             <h4>Coinbase</h4>
 
                             <!-- Price of the Coinbase Exchange to be updated here -->
 
-                            <span id="exchangePrice">$2300</span>
+                            <button id='buyButton coinbase'><i class="fa-solid fa-arrow-right-to-bracket fa-xl"></i></button>
                         </div>
                     </a>
-                    
-                    <a href="https://www.kucoin.com/">
+                
+                    <a href="https://www.kucoin.com/trade/ETH-USDT" id="kucoin">
                         <div class="exchange number-4">
                             <img src="https://dsm01pap001files.storage.live.com/y4m8aupqw0kCEGSHRRf0Xrm8cOfGZEwhI75eIoqs9XuutYwFCdvHTedGlZGRQBhAPFrHY9vW30rFZ_NNShN0Lzc-tdPsS0eEZqgvOSrV6MPxUj_Qz2lqwvXP9Bw8XT-RPGlGPU9XKxpdc_mOGWZauZvEpZkCLSmBDGmjVopgekEwrWjGqCi9iI-oMBdeoDyrSYM?width=500&height=500&cropmode=none" width="50" width="50" alt="kucoin_crypto_exchange_logo">
                             <h4>KuCoin</h4>
 
                             <!-- Price of the KuCoin Exchange to be updated here -->
 
-                            <span id="exchangePrice">$2300</span>
+                            <button id='buyButton kucoin'><i class="fa-solid fa-arrow-right-to-bracket fa-xl"></i></button>
                         </div>
                     </a>
                 </div>
@@ -131,17 +152,18 @@
 
             <div class="container-box block-4">
                 <div class="heading">
-                    Chart:
+                    <h3>Chart</h3>
                 </div>
 
-                <!-- Chart data shall be imported and put in the .chartData division -->
-
-                <div class="chartData">
-
+                <div id="chart">
                 </div>
             </div>
         </section>
     </main>
 </body>
-<script src="app.js"></script>
+<script src="https://kit.fontawesome.com/9fb001571d.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="https://unpkg.com/lightweight-charts@3.4.0/dist/lightweight-charts.standalone.production.js"></script>
+<script src="/chart.js"></script>
+<script src="/click.js"></script>
 </html>
